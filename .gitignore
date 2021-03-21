@@ -1,0 +1,37 @@
+# python
+*.pyc
+
+# vivado temporal and compilation files
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.runs/
+*.srcs/
+*.tmp/
+*vivado.jou
+*vivado.log
+
+# xilinx generated IPs
+*cmodel/
+*demo_tb/
+
+# block designs
+hw/block/*/*.xdc
+hw/block/*/sim/
+hw/block/*/hw_handoff/
+hw/block/*/ipshared/
+hw/block/*/data
+# compilation sub ip
+hw/block/*/ip/**/*.vhdl
+hw/block/*/ip/**/*.v
+hw/block/*/ip/**/*.dcp
+hw/block/*/ip/**/*.xdc
+hw/block/*/ip/**/sim/
+hw/block/*/ip/**/synth/
+# specific for PS sub ip compilation
+hw/block/*/ip/**/*_init.*
+hw/block/*/ip/**/*_init_gpl.*
+hw/block/*/ip/**/*_init.html
+hw/block/*/ip/**/*_parameters.xml
+hw/block/*/ip/**/hdl/
