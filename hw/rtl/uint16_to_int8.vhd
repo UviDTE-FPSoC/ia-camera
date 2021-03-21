@@ -54,5 +54,17 @@ entity uint16_to_int8 is
 --=========================================== architecture ====================
 --=============================================================================
 	architecture arch of uint16_to_int8 is
+		signal DATA_AUX : std_logic_vector (8 downto 0);
 		begin
+			process (clk)
+			begin
+				M_AXI_ST_TVALID <= '0';
+				if reset_n <= '1' then
+					if S_AXI_ST_TVALID<='1' then
+						DATA_AUX <= ('0' & S_AXI_ST_TDATA (15 downto 8))-128;
+						M_AXI_ST_TDATA <= DATA_AUX (7 downto 0);
+						M_AXI_ST_TVALID <= '1';
+					end if;
+				end if;
+			end process;
 		end arch;
