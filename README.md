@@ -1,5 +1,5 @@
 # Develop
-this branch contains the whole project and therefore the following branches:
+This branch contains the whole project and therefore the following branches:
 
   ### Axi Img Crop
   This branch implements the functionality to change the resolution and crop an image by selecting and filtering the appropriate pixels
