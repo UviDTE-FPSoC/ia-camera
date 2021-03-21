@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/noob/MisHistorias/Universidad/TFG/GitHub/ia-camera/hw/rtl/axis_img_crop.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'axis_img_crop'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/noob/MisHistorias/Universidad/TFG/GitHub/ia-camera/hw/sim/sim_axi_img_crop.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'test_bench'
