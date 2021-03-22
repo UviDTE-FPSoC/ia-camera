@@ -58,13 +58,17 @@ entity uint16_to_int8 is
 		begin
 			process (clk)
 			begin
-				M_AXI_ST_TVALID <= '0';
-				if reset_n <= '1' then
-					if S_AXI_ST_TVALID<='1' then
-						DATA_AUX <= ('0' & S_AXI_ST_TDATA (15 downto 8))-128;
-						M_AXI_ST_TDATA <= DATA_AUX (7 downto 0);
-						M_AXI_ST_TVALID <= '1';
-					end if;
+			    if rising_edge(clk) then
+                    M_AXI_ST_TVALID <= '0';
+                    if reset_n <= '0' then
+                    else
+                        if S_AXI_ST_TVALID<='0' then
+                        else
+                            DATA_AUX <= ('0' & S_AXI_ST_TDATA (15 downto 8))-128;
+                            M_AXI_ST_TDATA <= DATA_AUX (7 downto 0);
+                            M_AXI_ST_TVALID <= '1';
+                        end if;
+                    end if;
 				end if;
 			end process;
 		end arch;

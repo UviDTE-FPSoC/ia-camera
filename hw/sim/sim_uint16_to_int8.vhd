@@ -47,20 +47,19 @@ architecture arch_tb of test_bench is
     begin
 --instance 'uint16_to_int8'
     my_uint16_to_int8 : uint16_to_int8 port map(
-    clk=>clk,
-      reset_n=>reset_n,
-      S_AXI_ST_TDATA=>S_AXI_ST_TDATA,
-      S_AXI_ST_TVALID=>S_AXI_ST_TVALID,
-      S_AXI_ST_TREADY=>S_AXI_ST_TREADY,
-      S_AXI_ST_TLAST=>S_AXI_ST_TLAST,
-      M_AXI_ST_TDATA=>M_AXI_ST_TDATA,
-      M_AXI_ST_TVALID=>M_AXI_ST_TVALID,
-      M_AXI_ST_TREADY=>M_AXI_ST_TREADY,
-      M_AXI_ST_TLAST=>M_AXI_ST_TLAST
+        clk=>clk,
+        reset_n=>reset_n,
+        S_AXI_ST_TDATA=>S_AXI_ST_TDATA,
+        S_AXI_ST_TVALID=>S_AXI_ST_TVALID,
+        S_AXI_ST_TREADY=>S_AXI_ST_TREADY,
+        S_AXI_ST_TLAST=>S_AXI_ST_TLAST,
+        M_AXI_ST_TDATA=>M_AXI_ST_TDATA,
+        M_AXI_ST_TVALID=>M_AXI_ST_TVALID,
+        M_AXI_ST_TREADY=>M_AXI_ST_TREADY,
+        M_AXI_ST_TLAST=>M_AXI_ST_TLAST
     );
     --simulation clock process
         simulation_clk : process
-        constant max_cycles:integer:= 1000;
         begin
           clk <= not(clk);
           if (clk = '0') then
@@ -75,21 +74,14 @@ architecture arch_tb of test_bench is
             S_AXI_ST_TDATA <= "0000000000000000";
             S_AXI_ST_TVALID <= '0';
             reset_n <= '0';
+          else
+             S_AXI_ST_TDATA<=std_logic_vector(to_unsigned(edge_rise,16));
           end if;
           if(edge_rise = 5) then
             reset_n <= '1';
           end if;
-          if(edge_rise = 10) then
-            S_AXI_ST_TDATA <= "0000000000000000";
+          if(edge_rise = 8) then
             S_AXI_ST_TVALID <= '1';
           end if;
-          if(edge_rise = 11) then
-            S_AXI_ST_TDATA <= "0000000100000000";
-            S_AXI_ST_TVALID <= '1';
-          end if;
-          if(edge_rise = 12) then
-            S_AXI_ST_TDATA <= "1111111111111111";
-            S_AXI_ST_TVALID <= '1';
-          end if;
-   end process stimuli;
+        end process stimuli;
 end arch_tb;
